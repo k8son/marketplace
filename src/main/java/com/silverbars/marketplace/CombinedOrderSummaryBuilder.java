@@ -37,12 +37,12 @@ public class CombinedOrderSummaryBuilder implements OrderSummaryBuilder{
     }
 
     private List<Order> getFilteredOrders(Collection<Order> orders, OrderType orderType){
-        // Return all (sorted) orders for the given type as a list
+        // Return all orders for the given type as a list
         return orders.stream().filter(o -> o.getOrderType().equals(orderType)).collect(Collectors.toList());
     }
 
     private List<Order> getCombinedOrders(List<Order> orders) {
-        // Use a temporary map (keyed) on the unit price to combine all orders for the same unit price
+        // Use a temporary map keyed on the unit price to combine all orders for the same unit price
         Map<Double, Order> combined = new HashMap<>();
         orders.stream().forEach(o -> {
             if (combined.containsKey(o.getUnitPrice())){

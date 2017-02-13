@@ -31,6 +31,9 @@ public class OrderValidationHelper {
         if (!violations.isEmpty()) {
             StringBuilder sb = new StringBuilder("Invalid Order: ");
             sb.append(violations.stream().map(v -> v.getMessage()).collect(Collectors.joining(",")));
+            // Typically would actually throw a subclass of this - ie ValidationException
+            // But as we have no other exceptions in this small example we will just
+            // use the base class.
             throw new MarketPlaceException(sb.toString());
         }
     }
